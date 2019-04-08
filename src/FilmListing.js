@@ -2,28 +2,35 @@ import React from 'react';
 import FilmRow from './FilmRow';
 
 const FilmListing = ({films}) => {
-const filmRows = films.map(film => {
-    return (
-        <FilmRow film={film} key={film.id} />
-        // <div className="film-row" key={film.id}>
-        //     <figure className="film-poster">
-        //     <img src={`https://image.tmdb.org/t/p/w780${film.poster_path}`} alt="" />
-        //     </figure>
-    
-        //     <div className="film-summary">
-        //     <h1>{film.title}</h1>
-        //     <p>{new Date(film.release_date).getFullYear()}</p>
-        //     </div>
-        // </div>
-    )
-})
+    const filmRows = films.map(film => {
+        return (
+            <FilmRow film={film} key={film.id} />
+        )
+    });
+
+    const handleFaveClick = (filter) => () => {
+        console.log(`Setting filter to ${filter}`)
+    };
 
     return (
         <div className="film-list">
-          <h1 className="section-title">FILMS</h1>
+            <h1 className="section-title">
+                FILMS
+            </h1>
+
+            <div className="film-list-filters">
+                <div className="film-list-filter"  onClick={handleFaveClick('all')}>
+                    ALL
+                    <span className="section-count">{films.length}</span>
+                </div>
+                <div className="film-list-filter" onClick={handleFaveClick('faves')}>
+                    FAVES
+                    <span className="section-count">0</span>
+                </div>
+            </div>
             {filmRows}
         </div>
-    )
-}
+    );
+};
 
 export default FilmListing;
