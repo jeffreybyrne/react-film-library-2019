@@ -6,6 +6,7 @@ const Fave = () => {
     const divClassName = (isFave ? 'remove_from_queue' : 'add_to_queue');
 
     const handleClick = (event) => {
+        event.stopPropagation();
         console.log("Clicked the fave button")
         setIsFave(!isFave);
         console.log(`Is this a fave? ${isFave}`)
