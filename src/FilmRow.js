@@ -1,12 +1,11 @@
 import React from 'react';
+import FilmPoster from './FilmPoster';
 
 const FilmRow = ({film}) => {
 
     return (
         <div className="film-row" >
-            <figure className="film-poster">
-            <img src={`https://image.tmdb.org/t/p/w780${film.poster_path}`} alt="" />
-            </figure>
+            <FilmPoster film={film} key={film.id} />
 
             <div className="film-summary">
             <h1>{film.title}</h1>
