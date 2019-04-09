@@ -3,12 +3,11 @@ import FilmPoster from './FilmPoster';
 import Fave from './Fave';
 import FaveContext from './FaveContext';
 
-
 const FilmRow = ({film, isFave}) => {
-  const favesFromContext = useContext(FaveContext);
+  const faveContext = useContext(FaveContext);
 
   const handleDetailsClick = (event) => {
-    console.log(`Fetching details for ${film.title}`);
+    faveContext.toggleCurrentFilm(film);
   }
 
   return (
@@ -19,7 +18,7 @@ const FilmRow = ({film, isFave}) => {
         <p>{new Date(film.release_date).getFullYear()}</p>
       </div>
 
-      <Fave isFave={isFave} onToggle={() => favesFromContext.toggleFave(film)} />
+      <Fave isFave={isFave} onToggle={() => faveContext.toggleFave(film)} />
     </article>
   );
 };
