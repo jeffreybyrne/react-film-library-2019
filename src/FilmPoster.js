@@ -1,11 +1,11 @@
 import React from 'react';
 
 const FilmPoster = ({film}) => {
-    return (
-        <figure className="film-poster">
-            <img src={`https://image.tmdb.org/t/p/w780${film.poster_path}`} alt="" />
-        </figure>
-    )
+  const posterUrl = `https://image.tmdb.org/t/p/w780/${film.poster_path}`;
+
+  return (
+    <img src={`${posterUrl}`} alt={film.title} />
+  );
 };
 
 export default FilmPoster;
